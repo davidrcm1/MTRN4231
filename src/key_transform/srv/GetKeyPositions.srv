@@ -1,0 +1,8 @@
+# Request
+# (Leave this section blank if no specific request data is needed)
+
+---
+# Response
+# Array of key positions in the map frame
+
+key_pos_msgs/KeyPosition[] key_positions  # Array of KeyPosition messages

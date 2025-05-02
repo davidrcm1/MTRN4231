@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+
+<robot name="end_effector">
+  <!-- Define a material called "green" which can be used to colour links. -->
+  <material name="green">
+    <color rgba="0 0.8 0 1"/>
+  </material>
+
+  <!-- Define a base link which acts as the root link for the robot. -->
+  <link name="servo">
+
+    <!-- Visual representation of the link -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.04 0.03" />
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <!-- Collision geometry of the link -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.04 0.03" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="mullet">
+
+    <!-- Visual representation of the link -->
+    <visual>
+      <origin xyz="0 0 0.06" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.22" radius="0.005" />
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <!-- Collision geometry of the link -->
+    <collision>
+      <origin xyz="0 0 0.06" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.22" radius="0.005" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="head">
+
+    <!-- Visual representation of the link -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.015" />
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <!-- Collision geometry of the link -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.015" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint definitions -->
+  <joint name="servo_joint" type="fixed">
+    <parent link="servo"/>
+    <child link="mullet"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0.01 0.03 0" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="mullet_head" type="fixed">
+    <parent link="mullet"/>
+    <child link="head"/>
+    <axis xyz="0 0 0"/>
+    <origin xyz="0 0 0.18" rpy="0 0 0"/>
+  </joint>
+  
+</robot>
